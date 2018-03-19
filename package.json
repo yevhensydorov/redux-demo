@@ -1,5 +1,5 @@
 {
-  "name": "expense-tracker",
+  "name": "redux-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,6 +14,10 @@
     "presets": [
       "babel-preset-react",
       "babel-preset-env"
+    ],
+    "plugins": [
+      "transform-es2015-destructuring",
+      "transform-object-rest-spread"
     ]
   },
   "dependencies": {

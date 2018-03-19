@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import SearchBarContainer from '../containers/SearchBarContainer';
 import SearchResults from './SearchResults';
 import search from '../services/search';
 
@@ -8,18 +8,10 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
-      query: '',
       results: []
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event){
-    this.setState({
-      query: event.target.value
-    });
   }
 
   handleSubmit(event){
@@ -27,7 +19,6 @@ class Search extends React.Component {
 
     search(this.state.query)
       .then(results => {
-        debugger;
         this.setState({
           results: results.items
         });
@@ -37,11 +28,7 @@ class Search extends React.Component {
   render(){
     return (
       <div>
-        <SearchBar
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          query={this.state.query}
-        />
+        <SearchBarContainer />
         <SearchResults
           playVideo={this.props.playVideo}
           results={this.state.results}

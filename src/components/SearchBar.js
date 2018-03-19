@@ -11,7 +11,8 @@ class SearchBar extends React.Component {
           type="text"
           name="query"
           placeholder="Search..."
-          onChange={this.props.handleChange}
+          onChange={event => this.props.updateQuery(event.target.value)}
+          value={this.props.query}
         />
         <button type="submit">Search</button>
       </form>

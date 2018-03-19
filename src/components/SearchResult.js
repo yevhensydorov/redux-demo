@@ -1,33 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class SearchResult extends React.Component {
-  render(){
-    const { snippet } = this.props.result;
-    const { videoId } = this.props.result.id;
-    const { description, title } = snippet;
-    const { height, width, url } = this.props.result.snippet.thumbnails.default;
-    return (
+
+const SearchResult = ({result, playVideo, videoId}) =>{
+
+   return (
       <li
         className="result-item"
         onClick={ event => {
-          this.props.playVideo(videoId);
+          playVideo(videoId);
         }}
       >
         <img
           className="result-img"
-          src={url}
-          height={height}
-          width={width}
+          src={result.snippet.thumbnails.default.url}
+          height={result.snippet.thumbnails.default.height}
+          width={result.snippet.thumbnails.default.width}
         />
         <div className="result-description">
           <div>
-            <strong>{title}</strong>
+            <strong>{result.snippet.title}</strong>
           </div>
-          {description}
+          {result.snippet.description}
         </div>
       </li>
     );
-  }
+
+};
+
+SearchResult.propTypes = {
+  result: PropTypes.object,
+  playVideo: PropTypes.func,
+  videoId: PropTypes.string
 };
 
 export default SearchResult;

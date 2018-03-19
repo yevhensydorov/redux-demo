@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import search from './search';
+import query from './query';
 
 export default combineReducers({
-  search
+  query
 });

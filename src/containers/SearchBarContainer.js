@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {updateQuery} from '../actions';
+import {updateQuery, searchRequest} from '../actions';
 import SearchBar from '../components/SearchBar';
 
 const getQuery = (state) => {
@@ -9,7 +9,8 @@ const getQuery = (state) => {
 const mapStateToProps = state => ({query: getQuery(state)});
 
 const mapDispatchToProps = dispatch => ({
-  updateQuery: query => dispatch(updateQuery(query))
+  updateQuery: query => dispatch(updateQuery(query)),
+  searchRequest: query => dispatch(searchRequest(query))
 });
 
 export default connect(

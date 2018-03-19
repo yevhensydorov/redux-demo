@@ -5,7 +5,10 @@ class SearchBar extends React.Component {
     return (
       <form
         className="d-flex justify-content-center"
-        onSubmit={this.props.handleSubmit}
+        onSubmit={event => {
+          event.preventDefault();
+          this.props.searchRequest(this.props.query);
+        }}
       >
         <input
           type="text"
